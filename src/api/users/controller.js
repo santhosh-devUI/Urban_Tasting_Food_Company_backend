@@ -46,7 +46,7 @@ export const signup=(req,res)=>{
 }
 
 export const login=(req,res)=>{
-    userModel.findOne({email_id:req.body.email_id,mobile_no:req.body.mobile_no})
+    userModel.findOne({"email_id":req.body.email_id,"mobile_no":req.body.mobile_no})
     .then((result)=>{
         res.send(result)
     })
