@@ -13,8 +13,13 @@ const userSchema = new mongoose.Schema({
         type:String
     },
     role:{
-        type:String
+        type:String,
+        default:'user'
     },
+    is_Verified:{
+        type:Boolean,
+        default:false
+    }
 }, {
 		timestamps: true
 	});
