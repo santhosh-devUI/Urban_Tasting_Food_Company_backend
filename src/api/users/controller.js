@@ -1,5 +1,6 @@
 import userModel from "../common/userModel";
 import nodemailer from "nodemailer";
+import bookingModel from "../common/bookingModel";
 
 
 //for send mail
@@ -63,3 +64,24 @@ export const verifyEmail=async(req,res)=>{
         console.log(err);
     }
 }
+
+export const startBooking=(req,res)=>{
+bookingModel.create(req.body)
+.then((result)=>{
+    res.send(result)
+})
+.catch((err)=>{
+    res.send(err)
+})
+}
+
+export const updateBooking=(req,res)=>{
+    bookingModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+    }
+

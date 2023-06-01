@@ -2,6 +2,7 @@ import adminModel from "./adminModel";
 import branchModel from "../common/branchesModel";
 import slotModel from "../common/slotsSchema";
 import userModel from "../common/userModel";
+import bookingModel from "../common/bookingModel";
 
 export const login=(req,res)=>{
     adminModel.find({"username":req.body.username,"password":req.body.password})
@@ -103,3 +104,45 @@ export const showUsers=(req,res)=>{
         res.send(err)
     })
 }
+
+export const addBookings=(req,res)=>{
+    bookingModel.create(req.body)
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
+export const viewBookings=(req,res)=>{
+    bookingModel.find({})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
+export const updateBookings=(req,res)=>{
+    bookingModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
+export const deleteBookings=(req,res)=>{
+    bookingModel.findByIdAndDelete(req.params.id)
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
+ 

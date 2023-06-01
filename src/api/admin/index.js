@@ -10,7 +10,11 @@ import{
     viewSlots,
     updateSlot,
     deleteSlot,
-    showUsers
+    showUsers,
+    addBookings,
+    viewBookings,
+    updateBookings,
+    deleteBookings
 } from "./controller"
 
 const router=new Router()
@@ -34,6 +38,14 @@ router.get('/showslots',viewSlots)
 router.put('/updateslot/:id',updateSlot),
 
 router.delete('/deleteslot/:id', deleteSlot)
+
+router.post('/addbooking', addBookings)
+
+router.get('/showbookings', viewBookings)
+
+router.put('/updatebookings/:id',updateBookings)
+
+router.delete('/deletebooking/:id', deleteBookings)
 
 
 
