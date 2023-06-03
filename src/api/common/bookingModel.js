@@ -2,10 +2,13 @@ import mongoose from "mongoose"
 
 const bookingSchema=new mongoose.Schema({
     user_id:{
-        type:String
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'users'
+
     },
     branch_id:{
-        type:String
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'branches'
     },
     booking_date:{
         type:String
