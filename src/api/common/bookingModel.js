@@ -20,8 +20,7 @@ const bookingSchema=new mongoose.Schema({
         type:Number
     },
     slot:{
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'slots'
+        type:String
     },
     booked_by:{
         type:String

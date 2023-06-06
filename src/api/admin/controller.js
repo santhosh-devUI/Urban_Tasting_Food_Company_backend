@@ -116,7 +116,7 @@ export const addBookings=(req,res)=>{
 }
 
 export const viewBookings=(req,res)=>{
-    bookingModel.find().populate('user_id branch_id slot').then(result=>{
+    bookingModel.find().populate('user_id branch_id').then(result=>{
         res.send(result)
     }).catch(err=>{
         res.send(err)
