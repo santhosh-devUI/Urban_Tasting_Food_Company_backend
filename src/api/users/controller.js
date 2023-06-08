@@ -56,15 +56,35 @@ export const login=(req,res)=>{
     })
 }
 
+export const getProfile=(req,res)=>{
+    userModel.findById(req.params.id)
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
+
 export const verifyEmail=async(req,res)=>{
     try{
         const updatedInfo=await userModel.updateOne({_id:req.query.id},{$set:{is_Verified:true}})
       res.send(updatedInfo)
+      console.log(updatedInfo, "update",res,"res")
     }catch(err){
         console.log(err);
     }
 }
-
+ export const updateProfile=(req,res)=>{
+    userModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+ }
 export const startBooking=(req,res)=>{
 bookingModel.create(req.body)
 .then((result)=>{
