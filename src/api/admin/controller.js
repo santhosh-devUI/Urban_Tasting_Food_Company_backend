@@ -96,7 +96,7 @@ export const deleteSlot=(req,res)=>{
 }
 
 export const showUsers=(req,res)=>{
-    userModel.find({})
+    userModel.find({}).populate('branch')
     .then((result)=>{
         res.send(result)
     })

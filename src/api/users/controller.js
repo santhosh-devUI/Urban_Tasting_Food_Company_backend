@@ -1,6 +1,7 @@
 import userModel from "../common/userModel";
 import nodemailer from "nodemailer";
 import bookingModel from "../common/bookingModel";
+import branchModel from "../common/branchesModel";
 
 
 //for send mail
@@ -47,7 +48,7 @@ export const signup=(req,res)=>{
 }
 
 export const login=(req,res)=>{
-    userModel.findOne({"email_id":req.body.email_id,"mobile_no":req.body.mobile_no})
+    userModel.findOne({"email_id":req.body.email_id,"mobile_no":req.body.mobile_no}).populate('branch')
     .then((result)=>{
         res.send(result)
     })
@@ -57,7 +58,7 @@ export const login=(req,res)=>{
 }
 
 export const getProfile=(req,res)=>{
-    userModel.findById(req.params.id)
+    userModel.findById(req.params.id).populate('branch')
     .then((result)=>{
         res.send(result)
     })
@@ -77,7 +78,7 @@ export const verifyEmail=async(req,res)=>{
     }
 }
  export const updateProfile=(req,res)=>{
-    userModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    userModel.findByIdAndUpdate(req.params.id,req.body,{new:true}).populate('branch')
     .then((result)=>{
         res.send(result)
     })
@@ -104,4 +105,13 @@ export const updateBooking=(req,res)=>{
         res.send(err)
     })
     }
+
+export const allBranches=(req,res)=>{
+    branchModel.find({}).then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}    
 

@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema({
     is_Verified:{
         type:Boolean,
         default:false
+    },
+    branch:{
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'branches',
+        default:null
     }
 }, {
 		timestamps: true

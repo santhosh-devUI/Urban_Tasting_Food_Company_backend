@@ -6,7 +6,8 @@ getProfile,
 verifyEmail,
 updateProfile,
 startBooking,
-updateBooking
+updateBooking,
+allBranches
 } from "./controller"
 
 const router=new Router()
@@ -24,5 +25,7 @@ router.put('/profile/:id', updateProfile)
 router.post('/booking',startBooking)
 
 router.put('/changebooking/:id', updateBooking)
+
+router.get('/branches', allBranches)
 
 export default router
