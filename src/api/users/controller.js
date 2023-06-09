@@ -4,6 +4,7 @@ import bookingModel from "../common/bookingModel";
 import branchModel from "../common/branchesModel";
 
 
+
 //for send mail
 
 const sendVerifyMail=async(name,email,user_id)=>{
@@ -96,6 +97,17 @@ bookingModel.create(req.body)
 })
 }
 
+export const viewUserBookings=(req,res)=>{
+    bookingModel.find({"user_id":req.query.user_id}).populate('user_id branch_id')
+    .then((result)=>{
+        res.send(result)
+        console.log(result);
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
 export const updateBooking=(req,res)=>{
     bookingModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
     .then((result)=>{
@@ -113,5 +125,5 @@ export const allBranches=(req,res)=>{
     .catch((err)=>{
         res.send(err)
     })
-}    
+}     
 

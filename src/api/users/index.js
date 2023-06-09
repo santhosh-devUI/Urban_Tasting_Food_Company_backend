@@ -7,7 +7,8 @@ verifyEmail,
 updateProfile,
 startBooking,
 updateBooking,
-allBranches
+allBranches,
+viewUserBookings
 } from "./controller"
 
 const router=new Router()
@@ -23,6 +24,8 @@ router.get('/getprofile/:id', getProfile)
 router.put('/profile/:id', updateProfile)
 
 router.post('/booking',startBooking)
+
+router.get('/showbookings', viewUserBookings)
 
 router.put('/changebooking/:id', updateBooking)
 
