@@ -128,8 +128,8 @@ export const allBranches=(req,res)=>{
     })
 }     
 
-export const viewAllSlots=(req,res)=>{
-    slotModel.find().then((result)=>{
+export const viewSlotsByType=(req,res)=>{
+    slotModel.find({"type":req.query.type}).then((result)=>{
         res.send(result)
     })
     .catch((err)=>{
