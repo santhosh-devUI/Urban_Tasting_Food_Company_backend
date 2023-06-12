@@ -2,6 +2,7 @@ import userModel from "../common/userModel";
 import nodemailer from "nodemailer";
 import bookingModel from "../common/bookingModel";
 import branchModel from "../common/branchesModel";
+import slotModel from "../common/slotsSchema";
 
 
 
@@ -127,3 +128,11 @@ export const allBranches=(req,res)=>{
     })
 }     
 
+export const viewAllSlots=(req,res)=>{
+    slotModel.find().then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}

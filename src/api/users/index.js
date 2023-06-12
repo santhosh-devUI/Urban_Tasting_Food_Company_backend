@@ -8,7 +8,8 @@ updateProfile,
 startBooking,
 updateBooking,
 allBranches,
-viewUserBookings
+viewUserBookings,
+viewAllSlots
 } from "./controller"
 
 const router=new Router()
@@ -30,5 +31,7 @@ router.get('/showbookings', viewUserBookings)
 router.put('/changebooking/:id', updateBooking)
 
 router.get('/branches', allBranches)
+
+router.get('/slots', viewAllSlots)
 
 export default router
