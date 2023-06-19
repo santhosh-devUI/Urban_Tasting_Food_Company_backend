@@ -35,6 +35,17 @@ export const viewBranches=(req,res)=>{
     })
 }
 
+export const viewBranchBasedOnID=(req,res)=>{
+    branchModel.findById(req.params.id)
+    .then((result)=>{
+        res.send(result)
+        console.log(result);
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
 export const updateBranch=(req,res)=>{
     branchModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
     .then((result)=>{

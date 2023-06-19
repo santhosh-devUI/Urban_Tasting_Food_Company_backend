@@ -14,7 +14,8 @@ import{
     addBookings,
     viewBookings,
     updateBookings,
-    deleteBookings
+    deleteBookings,
+    viewBranchBasedOnID
 } from "./controller"
 
 const router=new Router()
@@ -26,6 +27,8 @@ router.get('/showusers', showUsers)
 router.post('/addbranch',addBranch)
 
 router.get('/showbranches',viewBranches)
+
+router.get('/viewbranch/:id', viewBranchBasedOnID)
 
 router.put('/updatebranch/:id',updateBranch),
 
