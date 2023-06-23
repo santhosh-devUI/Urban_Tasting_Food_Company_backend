@@ -4,6 +4,9 @@ const slotSchema= new mongoose.Schema({
     slot_name:{
         type:String
     },
+    branch:{
+        type:String
+    },
     type:{
         type:String,
         enum:['Lunch','Dinner']

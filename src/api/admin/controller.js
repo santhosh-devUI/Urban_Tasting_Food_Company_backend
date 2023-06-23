@@ -86,6 +86,16 @@ export const viewSlots=(req,res)=>{
     })
 }
 
+export const showSlotsBasedOnBranch=(req,res)=>{
+    slotModel.find({'branch':req.query.branch})
+    .then((result)=>{
+        res.send({error:false, data:result})
+    })
+    .catch((err)=>{
+        res.send({error:true, code:err})
+    })
+}
+
 export const updateSlot=(req,res)=>{
     slotModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
     .then((result)=>{

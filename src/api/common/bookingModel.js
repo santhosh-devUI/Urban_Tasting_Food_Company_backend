@@ -14,10 +14,12 @@ const bookingSchema=new mongoose.Schema({
         type:String
     },
     lunch_status:{
-        type:Number
+        type:String,
+        default:'not available'
     },
     dinner_status:{
-        type:Number
+        type:String,
+        default:'not available'
     },
     slot:{
         type:String
@@ -26,8 +28,8 @@ const bookingSchema=new mongoose.Schema({
         type:String
     },
     status:{
-        type:Number,
-        default:0
+        type:Boolean,
+        
     }
 },{
   timestamps:true  

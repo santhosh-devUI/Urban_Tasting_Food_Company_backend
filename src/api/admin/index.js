@@ -8,6 +8,7 @@ import{
     deleteBranch,
     addSlot,
     viewSlots,
+    showSlotsBasedOnBranch,
     updateSlot,
     deleteSlot,
     showUsers,
@@ -37,6 +38,8 @@ router.delete('/deletebranch/:id', deleteBranch)
 router.post('/addslot',addSlot)
 
 router.get('/showslots',viewSlots)
+
+router.get('/branchslots',showSlotsBasedOnBranch)
 
 router.put('/updateslot/:id',updateSlot),
 
