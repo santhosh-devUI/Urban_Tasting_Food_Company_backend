@@ -4,6 +4,7 @@ import{
     login,
     addBranch,
     viewBranches,
+    viewCancelledBranches,
     updateBranch,
     deleteBranch,
     addSlot,
@@ -28,6 +29,8 @@ router.get('/showusers', showUsers)
 router.post('/addbranch',addBranch)
 
 router.get('/showbranches',viewBranches)
+
+router.get('/cancelbranches',viewCancelledBranches)
 
 router.get('/viewbranch/:id', viewBranchBasedOnID)
 

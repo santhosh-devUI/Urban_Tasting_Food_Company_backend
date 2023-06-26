@@ -26,7 +26,17 @@ export const addBranch=(req,res)=>{
 }
 
 export const viewBranches=(req,res)=>{
-    branchModel.find({})
+    branchModel.find({"status":"Active"})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
+
+export const viewCancelledBranches=(req,res)=>{
+    branchModel.find({"status":"Inctive"})
     .then((result)=>{
         res.send(result)
     })

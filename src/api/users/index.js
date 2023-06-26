@@ -9,6 +9,7 @@ startBooking,
 viewAllBookings,
 updateBooking,
 allBranches,
+viewCancelledBranches,
 showMyBranchSlots,
 viewUserBookings,
 viewSlotsByType,
@@ -37,6 +38,8 @@ router.get('/showbookings', viewUserBookings)
 router.put('/changebooking/:id', updateBooking)
 
 router.get('/branches', allBranches)
+
+router.get('/cancelbranches',viewCancelledBranches)
 
 router.post('/slots', viewSlotsByType)
 

@@ -154,7 +154,7 @@ export const updateBooking=(req,res)=>{
     }
 
 export const allBranches=(req,res)=>{
-    branchModel.find({}).then((result)=>{
+    branchModel.find({"status":"Active"}).then((result)=>{
         res.send(result)
     })
     .catch((err)=>{
@@ -162,6 +162,15 @@ export const allBranches=(req,res)=>{
     })
 }     
 
+export const viewCancelledBranches=(req,res)=>{
+    branchModel.find({"status":"Inctive"})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}
 export const viewSlotsByType=(req,res)=>{
     slotModel.find({'branch':req.body.branch,"type":req.body.type}).then((result)=>{
         res.send(result)

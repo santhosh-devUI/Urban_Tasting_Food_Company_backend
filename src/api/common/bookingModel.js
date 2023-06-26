@@ -21,11 +21,18 @@ const bookingSchema=new mongoose.Schema({
         type:String,
         default:'not available'
     },
+    slotId:{
+        type:String
+    },
     slot:{
         type:String
     },
     booked_by:{
         type:String
+    },
+    readStatus:{
+        type:String,
+        default:'no'
     },
     status:{
         type:Boolean,
