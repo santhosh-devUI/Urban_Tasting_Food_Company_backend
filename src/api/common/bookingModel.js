@@ -32,7 +32,7 @@ const bookingSchema=new mongoose.Schema({
     },
     readStatus:{
         type:String,
-        default:'no'
+        default:'No'
     },
     status:{
         type:Boolean,

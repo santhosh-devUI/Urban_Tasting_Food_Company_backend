@@ -43,6 +43,8 @@ router.get('/cancelbranches',viewCancelledBranches)
 
 router.post('/slots', viewSlotsByType)
 
+router.get('/branchslot',showMyBranchSlots)
+
 router.put('/slotupdate/:id', updateSlotsCount)
 
 router.get('/forgotpwd', forgotPassword)

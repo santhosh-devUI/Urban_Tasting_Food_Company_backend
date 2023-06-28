@@ -172,13 +172,14 @@ export const viewCancelledBranches=(req,res)=>{
     })
 }
 export const viewSlotsByType=(req,res)=>{
-    slotModel.find({'branch':req.body.branch,"type":req.body.type}).then((result)=>{
+    slotModel.find({'branch':req.body.branch,"type":req.body.type, 'status':'Yes'}).then((result)=>{
         res.send(result)
     })
     .catch((err)=>{
         res.send(err)
     })
 }
+
 export const forgotPassword=(req,res)=>{
     userModel.findOne({"email_id":req.query.email_id}).then((result)=>{     
           res.send(result);
@@ -201,7 +202,7 @@ export const updateSlotsCount=(req,res)=>{
 }
 
 export const showMyBranchSlots=(req,res)=>{
-    slotModel.find({'branch':req.query.branch})
+    slotModel.find({'branch':req.query.branch,'status':'Yes'})
     .then((result)=>{
         res.send({error:false,data:result})
     })

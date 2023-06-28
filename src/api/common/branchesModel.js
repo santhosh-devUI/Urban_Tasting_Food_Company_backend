@@ -14,13 +14,13 @@ const branchSchema=new mongoose.Schema({
         type:String
     },
     lunch_slots:{
-        type:String
+        type:Number
     },
     dinner:{
         type:String
     },
     dinner_slots:{
-        type:String
+        type:Number
     },
     radius:{
         type:String

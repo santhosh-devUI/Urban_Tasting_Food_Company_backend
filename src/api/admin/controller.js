@@ -87,7 +87,7 @@ export const addSlot=(req,res)=>{
 }
 
 export const viewSlots=(req,res)=>{
-    slotModel.find({})
+    slotModel.find({"status":"Yes"})
     .then((result)=>{
         res.send(result)
     })
