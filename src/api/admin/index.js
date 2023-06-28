@@ -17,7 +17,9 @@ import{
     viewBookings,
     updateBookings,
     deleteBookings,
-    viewBranchBasedOnID
+    viewBranchBasedOnID,
+    showUserBookings,
+    showSlotBasedOnId
 } from "./controller"
 
 const router=new Router()
@@ -42,6 +44,8 @@ router.post('/addslot',addSlot)
 
 router.get('/showslots',viewSlots)
 
+router.get('/slotid/:id', showSlotBasedOnId)
+
 router.get('/branchslots',showSlotsBasedOnBranch)
 
 router.put('/updateslot/:id',updateSlot),
@@ -55,6 +59,8 @@ router.get('/showbookings', viewBookings)
 router.put('/updatebookings/:id',updateBookings)
 
 router.delete('/deletebooking/:id', deleteBookings)
+
+router.post('/userbookings', showUserBookings)
 
 
 

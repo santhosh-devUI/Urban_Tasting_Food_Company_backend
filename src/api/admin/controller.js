@@ -175,4 +175,22 @@ export const deleteBookings=(req,res)=>{
     })
 }
 
- 
+ export const showUserBookings=(req,res)=>{
+    bookingModel.find({"user_id":req.body.user_id})
+    .then((result)=>{
+        res.send({error:false, data:result})
+    })
+    .catch((err)=>{
+        res.send({error:true, message:err})
+    })
+ }
+
+ export const showSlotBasedOnId=(req,res)=>{
+    slotModel.findById(req.params.id)
+    .then((result)=>{
+        res.send({error:false, data:result})
+    })
+    .catch((err)=>{
+        res.send({error:true, message:err})
+    })
+ }
