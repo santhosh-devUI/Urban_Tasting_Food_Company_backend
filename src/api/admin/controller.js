@@ -194,3 +194,13 @@ export const deleteBookings=(req,res)=>{
         res.send({error:true, message:err})
     })
  }
+
+ export const updateUser=(req,res)=>{
+    userModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then((result)=>{
+        res.send({error:false, data:result})
+    })
+    .catch((err)=>{
+        res.send({error:true, message:err})
+    })
+ }

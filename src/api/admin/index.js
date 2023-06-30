@@ -13,6 +13,7 @@ import{
     updateSlot,
     deleteSlot,
     showUsers,
+    updateUser,
     addBookings,
     viewBookings,
     updateBookings,
@@ -27,6 +28,8 @@ const router=new Router()
 router.post('/login',login)
 
 router.get('/showusers', showUsers)
+
+router.put('/updateuser/:id', updateUser)
 
 router.post('/addbranch',addBranch)
 
