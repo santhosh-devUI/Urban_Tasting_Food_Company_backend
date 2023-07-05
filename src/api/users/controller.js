@@ -220,3 +220,13 @@ export const viewAllBookings=(req,res)=>{
         res.send(err)
     })
 }
+
+export const showAllSlots=(req,res)=>{
+    slotModel.find({'status':'Yes'})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+}

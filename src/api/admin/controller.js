@@ -59,11 +59,31 @@ export const viewBranchBasedOnID=(req,res)=>{
 export const updateBranch=(req,res)=>{
     branchModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
     .then((result)=>{
+        console.log(result,"re");
+        if(result.status=="Deleted"){
+            bookingModel.updateMany({"branch_id":result._id},{$set:{"status":"booking branch deleted"}})
+            .then(success=>{
+                console.log(success);
+            })
+            .catch(fail=>{
+                console.log(fail);
+            })
+
+            slotModel.updateMany({"branch":result.location},{$set:{"status":"Deleted"}})
+            .then(success=>{
+                console.log(success,"succcc");
+            })
+            .catch(fail=>{
+                console.log(fail, 'fail');
+            })
+        }
         res.send(result)
     })
     .catch((err)=>{
         res.send(err)
     })
+    
+    
 }
 
 export const deleteBranch=(req,res)=>{
@@ -109,13 +129,22 @@ export const showSlotsBasedOnBranch=(req,res)=>{
 export const updateSlot=(req,res)=>{
     slotModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
     .then((result)=>{
+        if(result.status=="Deleted"){
+            bookingModel.updateMany({"slotId":result._id},{$set:{"status":"booking slot deleted"}})
+            .then(success=>{
+                console.log(success,"succcc");
+            })
+            .catch(fail=>{
+                console.log(fail, 'fail');
+            })
+        }
         res.send(result)
     })
     .catch((err)=>{
         res.send(err)
     })
 }
-
+ 
 export const deleteSlot=(req,res)=>{
     slotModel.findByIdAndDelete(req.params.id)
     .then((result)=>{

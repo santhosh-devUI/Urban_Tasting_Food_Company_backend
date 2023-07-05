@@ -14,7 +14,8 @@ showMyBranchSlots,
 viewUserBookings,
 viewSlotsByType,
 forgotPassword,
-updateSlotsCount
+updateSlotsCount,
+showAllSlots
 } from "./controller"
 
 const router=new Router()
@@ -42,6 +43,8 @@ router.get('/branches', allBranches)
 router.get('/cancelbranches',viewCancelledBranches)
 
 router.post('/slots', viewSlotsByType)
+
+router.get('/allslots', showAllSlots)
 
 router.get('/branchslot',showMyBranchSlots)
 
