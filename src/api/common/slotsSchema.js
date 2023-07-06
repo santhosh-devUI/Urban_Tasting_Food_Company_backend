@@ -23,6 +23,9 @@ const slotSchema= new mongoose.Schema({
     status:{
         type:String
     },
+    msg:{
+        type:String
+    }
 },
 {
     timestamps:true

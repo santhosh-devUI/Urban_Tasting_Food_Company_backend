@@ -172,7 +172,7 @@ export const viewCancelledBranches=(req,res)=>{
     })
 }
 export const viewSlotsByType=(req,res)=>{
-    slotModel.find({'branch':req.body.branch,"type":req.body.type, 'status':'Yes'}).then((result)=>{
+    slotModel.find({'branch':req.body.branch,"type":req.body.type, 'status':'Active'}).then((result)=>{
         res.send(result)
     })
     .catch((err)=>{
@@ -202,7 +202,7 @@ export const updateSlotsCount=(req,res)=>{
 }
 
 export const showMyBranchSlots=(req,res)=>{
-    slotModel.find({'branch':req.query.branch,'status':'Yes'})
+    slotModel.find({'branch':req.query.branch,'status':'Active'})
     .then((result)=>{
         res.send({error:false,data:result})
     })
@@ -222,7 +222,7 @@ export const viewAllBookings=(req,res)=>{
 }
 
 export const showAllSlots=(req,res)=>{
-    slotModel.find({'status':'Yes'})
+    slotModel.find({'status':'Active'})
     .then((result)=>{
         res.send(result)
     })

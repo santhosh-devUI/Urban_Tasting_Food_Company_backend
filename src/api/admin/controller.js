@@ -26,7 +26,7 @@ export const addBranch=(req,res)=>{
 }
 
 export const viewBranches=(req,res)=>{
-    branchModel.find({"status":"Active"})
+    branchModel.find({})
     .then((result)=>{
         res.send(result)
     })
@@ -61,7 +61,7 @@ export const updateBranch=(req,res)=>{
     .then((result)=>{
         console.log(result,"re");
         if(result.status=="Deleted"){
-            bookingModel.updateMany({"branch_id":result._id},{$set:{"status":"booking branch deleted"}})
+            bookingModel.updateMany({"branch_id":result._id},{$set:{"status":"Reject","msg":"branch deleted"}},{multi:true})
             .then(success=>{
                 console.log(success);
             })
@@ -69,7 +69,23 @@ export const updateBranch=(req,res)=>{
                 console.log(fail);
             })
 
-            slotModel.updateMany({"branch":result.location},{$set:{"status":"Deleted"}})
+            slotModel.updateMany({"branch":result.location},{$set:{"status":"Deleted","msg":"branch deleted"}})
+            .then(success=>{
+                console.log(success,"succcc");
+            })
+            .catch(fail=>{
+                console.log(fail, 'fail');
+            })
+        }else if(result.status=="Inactive"){
+            bookingModel.updateMany({"branch_id":result._id},{$set:{"status":"Reject","msg":"branch is inactive"}},{multi:true})
+            .then(success=>{
+                console.log(success);
+            })
+            .catch(fail=>{
+                console.log(fail);
+            })
+
+            slotModel.updateMany({"branch":result.location},{$set:{"status":"Deleted","msg":"branch is inactive"}})
             .then(success=>{
                 console.log(success,"succcc");
             })
@@ -107,7 +123,7 @@ export const addSlot=(req,res)=>{
 }
 
 export const viewSlots=(req,res)=>{
-    slotModel.find({"status":"Yes"})
+    slotModel.find({})
     .then((result)=>{
         res.send(result)
     })
@@ -129,14 +145,24 @@ export const showSlotsBasedOnBranch=(req,res)=>{
 export const updateSlot=(req,res)=>{
     slotModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
     .then((result)=>{
+        console.log(result);
         if(result.status=="Deleted"){
-            bookingModel.updateMany({"slotId":result._id},{$set:{"status":"booking slot deleted"}})
+            bookingModel.updateMany({"slotId":result._id},{$set:{"status":"Reject","msg":"slot deleted"}},{multi:true})
             .then(success=>{
                 console.log(success,"succcc");
             })
             .catch(fail=>{
                 console.log(fail, 'fail');
             })
+        }else if(result.status=="Inactive"){
+            bookingModel.updateMany({"slotId":result._id},{$set:{"status":"Reject","msg":"currently slot not available"}},{multi:true})
+            .then(success=>{
+                console.log(success,"succcc");
+            })
+            .catch(fail=>{
+                console.log(fail, 'fail');
+            })
+
         }
         res.send(result)
     })
